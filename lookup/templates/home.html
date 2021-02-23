@@ -1,5 +1,24 @@
-{% extends 'base.html' %}
-{% block content%}
-    <h1>Hello World!</h1>
+{% extends 'base.html' %} {% block content%}
+
+<br/>
+{% if api%}
+    {% if api == "Error found" %}
+        <h1>There is an error. try again..</h1> 
+    {% else %}
+    <div class="card" style="width: 30rem;" >
+        <img src="https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="card-img-top" alt="..."> 
+        <div class="card-body">
+            <h5 class="card-title">Air Quality Reports</h5>
+            <p class="card-text">This is an online report of air quality in USA based on US company API. </p>
+            <a href="https://docs.airnowapi.org/" class="btn btn-primary">Go To The Real Website</a>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Air Quality is <b>{{ api.0.AQI}}</b> </li>
+            <li class="list-group-item">Area is <b>{{ api.0.ReportingArea}} </b></li>
+            <li class="list-group-item">Status is <b>{{ api.0.Category.Name}} </b></li>
+        </ul>
+    </div>
+    {% endif %}
+ {% endif %}
 
 {% endblock %}
